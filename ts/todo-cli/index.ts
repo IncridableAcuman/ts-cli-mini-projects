@@ -1,52 +1,35 @@
 import inquirer = require("inquirer");
-let state:boolean=false;
-async function todoList() {
-    
-    const tasks = await inquirer.default.prompt([
+import TaskItem = require("./taskItem");
+import addTask from "./addTask";
+
+async function main() {
+    const answers = await inquirer.default.prompt([
         {
             type:"list",
-            name:"todo",
-            message:"Vazifalar",
-            choices:["Vazifa qo'shish","Vazifalar"]
-        },
-    ]);
-
-    const addTask = await inquirer.default.prompt([
-        {
-            type:"input",
-            name:"add",
-            message:"Vazifani kiriting: "
-        }
-    ])
-
-    const taskList = await inquirer.default.prompt([
-        {
-            type:"list",
-            name:"Tasks",
-            message:"Vazifalar",
-            choices:[result]
+            name:"action",
+            message:"Nima qilishni xohlaysiz?",
+            choices:["Qo'shish","O'chirish","Barchasi","Chiqish"]
         }
     ]);
 
-
-    let result:string="";
-
-    switch(tasks.todo){
-        case "Vazifa qo'shish":
-            state=true;
-            result=addTask.add;
+    switch(answers.action){
+        case "Qo'shish":
+            await addTask();
             break;
-        case "Vazifalar":
-            return arrayList.length;
+        case "O'chirish":
+            console.log("🗑 O'chirildi.")
+            break;
+        case "Barchasi":
+            console.log("Barchasi")
+            break;
+        case "Chiqish":
+            console.log("👋 Xayr.")
+            
             break;
         default:
-            console.log("Xatolik yuzaga keldi.")
-            break;
+            console.log("❌ Xatolik yuz berdi.")
     }
-    arrayList.push(result);
-    arrayList.map(choice=>{
-        console.log(choice)
-    })
+    await main();
 }
 
-todoList();
+main();
