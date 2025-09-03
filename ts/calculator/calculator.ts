@@ -11,13 +11,13 @@ async function main() {
         type:"list",
         name:"Amal",
         message:"Amalni tanlang: ",
-        choices:["+","-","*","/"]
+        choices:["+","-","*","/","^","%"]
        },
        {
         type:"number",
         name:"num2",
         message:"Ikkinchi sonni kiriting: "
-       } 
+       }
     ]);
 
     let result:number=0;
@@ -39,6 +39,14 @@ async function main() {
             }
             result=answers.num1*1./answers.num2;
             break;
+        case "^":
+            result=Math.pow(answers.num1,answers.num2);
+            break;
+        case "%":
+            result=answers.num1%answers.num2;
+            break;
+        default:
+            console.log("❌ Noto'gri amal")
     }
     console.log(`Natija: ${answers.num1} ${answers.Amal} ${answers.num2} = ${result}`);
 }
