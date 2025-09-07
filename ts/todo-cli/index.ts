@@ -1,8 +1,5 @@
 import inquirer = require("inquirer");
-import TaskItem = require("./taskItem");
-import addTask from "./addTask";
-import removeTask from "./removeTask";
-import listTask from "./listTask";
+import Todo from "./todo";
 
 async function main() {
     const answers = await inquirer.default.prompt([
@@ -16,13 +13,13 @@ async function main() {
 
     switch(answers.action){
         case "Qo'shish":
-            await addTask();
+            await Todo.addTask();
             break;
         case "O'chirish":
-            await removeTask();
+            Todo.removeTask()
             break;
         case "Barchasi":
-            await listTask();
+             Todo.listTask();
             break;
         case "Chiqish":
             break;
