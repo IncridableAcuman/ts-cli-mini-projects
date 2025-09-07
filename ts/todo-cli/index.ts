@@ -16,16 +16,19 @@ async function main() {
             await Todo.addTask();
             break;
         case "O'chirish":
-            Todo.removeTask()
+            await Todo.removeTask()
             break;
         case "Barchasi":
              Todo.listTask();
             break;
-        case "Chiqish":
+        case 
+        "Chiqish":
+            console.log("Xayr.")
             break;
         default:
             console.log("❌ Xatolik yuz berdi.")
     }
+    await main();
 }
 
 main();

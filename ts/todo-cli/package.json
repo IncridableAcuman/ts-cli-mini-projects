@@ -1,11 +1,12 @@
 {
   "dependencies": {
+    "fs": "^0.0.1-security",
     "inquirer": "^12.9.4",
     "process": "^0.11.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   },
   "devDependencies": {
-    "@types/node": "^24.3.0"
+    "@types/node": "^24.3.1"
   }
 }

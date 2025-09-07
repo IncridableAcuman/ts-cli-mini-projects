@@ -17,14 +17,33 @@ let counterId:number=1;
         console.log("✅ Qo'shildi.");
     } 
     // list tasks
+
      listTask(){
+        if(tasks.length===0){
+             console.log("❌ Vazifa yo'q.");
+             return;
+        }
+        console.log("\n📋 Sizning Vaizifalaringiz:");
         tasks.forEach(task=>{
-            console.log(`${task.id} ${task.task}`);
+            console.log(`ID -> ${task.id}. - ${task.task}`);
         })
     }
     // remove task
-    removeTask(){
-        console.log(tasks.filter(task=>task.id!==counterId));
+   async removeTask(){
+      if (tasks.length === 0) {
+            console.log("❌ Nothing to delete.");
+            return;
+  }
+        const {id} = await inquirer.prompt([
+            {
+                type:"list",
+                name:"id",
+                message:"Vazifani tanlang:",
+                choices:tasks.map(t=>({name:t.task,value:t.id}))
+            }
+        ]);
+        tasks=tasks.filter((t)=>t.id!==id);
+        console.log("🗑️ Vazifa o'chirildi.")
     }
 }
 export default new Todo();
